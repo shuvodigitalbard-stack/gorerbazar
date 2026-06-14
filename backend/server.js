@@ -8,10 +8,15 @@ const connectDB = require('./config/db');
 
 const app = express();
 
-// Connect to DB
-connectDB().catch(err => {
-  console.error('MongoDB connection error (will retry):', err.message);
-  // Don't exit - let the server start and retry connections
+// Connect to DB (non-blocking)
+let dbConnected = false;
+connectDB().then(() => { dbConnected = true; }).catch(err => {
+  console.error('MongoDB initial connection failed:', err.message);
+  console.log('Server will start without DB. Retrying in background...');
+  // Retry in background
+  setTimeout(() => {
+    connectDB().then(() => { dbConnected = true; }).catch(() => {});
+  }, 10000);
 });
 
 // Middleware
@@ -33,7 +38,7 @@ app.use('/api/reviews', require('./routes/reviews'));
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.json({ status: 'ok', db: dbConnected, timestamp: new Date().toISOString() });
 });
 
 // Serve frontend in production
