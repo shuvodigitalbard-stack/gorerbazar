@@ -12,11 +12,6 @@ const app = express();
 let dbConnected = false;
 connectDB().then(() => { dbConnected = true; }).catch(err => {
   console.error('MongoDB initial connection failed:', err.message);
-  console.log('Server will start without DB. Retrying in background...');
-  // Retry in background
-  setTimeout(() => {
-    connectDB().then(() => { dbConnected = true; }).catch(() => {});
-  }, 10000);
 });
 
 // Middleware
