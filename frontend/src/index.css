@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #4ade80;
+  --primary-dark: #22c55e;
+  --secondary: #fbbf24;
+  --accent: #2dd4bf;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-dark: #1a1a2e;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a5568;
+  --text-muted: #64748b;
+  --text-light: #e2e8f0;
+  --border: #e2e8f0;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --gradient-primary: linear-gradient(135deg, #4ade80, #22c55e);
+  --gradient-gold: linear-gradient(135deg, #fbbf24, #f59e0b);
+  --gradient-text: linear-gradient(135deg, #4ade80, #2dd4bf);
+  --font: 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font);
+  border: none;
+  outline: none;
+}
+
+input, textarea, select {
+  font-family: var(--font);
+  outline: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-green { background: #dcfce7; color: #16a34a; }
+.badge-gold { background: #fef3c7; color: #d97706; }
+.badge-red { background: #fee2e2; color: #dc2626; }
+.badge-blue { background: #dbeafe; color: #2563eb; }
+
+/* Price */
+.price-current {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+.price-original {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+
+/* Section */
+.section {
+  padding: 48px 0;
+}
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.section-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+/* Grid */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 222, 128, 0.4);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary-dark);
+}
+.btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-gold {
+  background: var(--gradient-gold);
+  color: #fff;
+}
+.btn-sm {
+  padding: 6px 16px;
+  font-size: 13px;
+}
+.btn-lg {
+  padding: 14px 32px;
+  font-size: 16px;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 16px;
+}
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  transition: border-color 0.2s;
+  background: var(--bg-primary);
+}
+.form-input:focus {
+  border-color: var(--primary);
+}
+textarea.form-input {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Slick Carousel */
+.slick-dots li button:before {
+  font-size: 10px;
+  color: var(--primary);
+}
+.slick-dots li.slick-active button:before {
+  color: var(--primary-dark);
+}
+.slick-prev, .slick-next {
+  z-index: 10;
+}
+.slick-prev { left: 10px; }
+.slick-next { right: 10px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section { padding: 32px 0; }
+  .section-title { font-size: 22px; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .grid-4 { grid-template-columns: 1fr 1fr; gap: 8px; }
+}
