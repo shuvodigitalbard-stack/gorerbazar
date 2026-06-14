@@ -9,7 +9,10 @@ const connectDB = require('./config/db');
 const app = express();
 
 // Connect to DB
-connectDB();
+connectDB().catch(err => {
+  console.error('MongoDB connection error (will retry):', err.message);
+  // Don't exit - let the server start and retry connections
+});
 
 // Middleware
 app.use(cors({ origin: true, credentials: true }));
